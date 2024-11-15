@@ -1,0 +1,15 @@
+ BERT algorithm has demonstrated outstanding performance across a number of domains, including search, chatbots, sentiment analysis, and autocomplete. 4 In areas where the BERT framework has been successful, it generally replaces previously existing approaches that are more computationally efficient and less complex but perform worse on tasks involving complex textual context. Although there is no precise formula to determine appropriate use cases and address tradeoffs between performance and complexity,
+
+ BERT algorithm is best suited for domains where large amounts of training text is available
+Weakness of Bert
+Pre-training BERT   pre-train BERT using two unsupervised tasks.
+
+Task #1: Masked LM : the concept of masked language modeling (MLM) as a method to train deep bidirectional language models. It explains that standard conditional language models can only be trained in one direction due to the risk of trivially predicting the target word in a multi-layered context. To overcome this limitation, MLM randomly masks a percentage of input tokens and predicts those masked tokens. This approach allows for the creation of bidirectional pre-trained models. However, there's a challenge of a mismatch between pre-training and fine-tuning since the [MASK] token used in pre-training doesn't appear during fine-tuning. To address this, during training, the [MASK] token is not always used, and instead, 15% of token positions are chosen at random for prediction, with the i-th token being replaced with the [MASK] token 80% of the time, a random token 10% of the time, and the unchanged token 10% of the time. This ensures the model learns to predict tokens accurately during both pre-training and fine-tuning stages.
+
+Task #2: Next Sentence Prediction (NSP )
+
+Next Sentence Prediction (NSP) as a pre-training task aimed at enhancing the understanding of relationships between two sentences. Many downstream tasks like Question Answering (QA) and Natural Language Inference (NLI) rely on comprehending such relationships, which are not directly captured by traditional language modeling. NSP involves predicting whether a given sentence (B) follows another sentence (A) in a pair, with 50% of the pairs consisting of the actual subsequent sentence (labeled as IsNext) and 50% containing a random sentence from the corpus (labeled as NotNext). This binary classification task helps the model grasp sentence relationships, and despite its simplicity, pre-training on NSP has shown significant benefits for QA and NLI tasks. Unlike previous approaches that only transfer sentence embeddings, BERT transfers all parameters to initialize end-task model parameters, making it more effective for downstream tasks.
+
+
+****************************
+One limitation of BERT lies in its tokenization process, which splits words into subword units called subtokens. This approach may result in a loss of some context, especially in languages with complex word formations. BERT’s training process is computationally intensive, requiring substantial resources and time for fine-tuning on specific tasks.
